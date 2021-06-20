@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+
+class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int arraySize = sc.nextInt();
+        int arr[] = new int[arraySize];
+        for (int i = 0; i < arraySize; i++)
+            arr[i] = sc.nextInt();
+        System.out.println(maxOfArray(arr, 0));
+    }
+
+    public static int maxOfArray(int[] arr, int currentIndex) {
+        if (currentIndex == arr.length - 1)
+            return arr[currentIndex];
+
+        int maxFromAheadOfThisIndex = maxOfArray(arr, currentIndex + 1);
+        return Math.max(maxFromAheadOfThisIndex, arr[currentIndex]);
+    }
+
+}
